@@ -1,0 +1,347 @@
+
+# 1️⃣ Multi-Slab Income Tax Calculation
+
+### 📝 Question:
+
+Income tax is calculated as:
+
+* Income ≤ ₹5,00,000 → No tax
+* ₹5,00,001 – ₹10,00,000 → 10%
+* Above ₹10,00,000 → 20%
+* If senior citizen (age ≥ 60) → 5% extra rebate on total tax
+
+Ask user for income and age. Print final tax.
+
+---
+
+### ✅ Answer:
+
+```python
+income = float(input("Enter Annual Income: "))
+age = int(input("Enter Age: "))
+
+if income <= 500000:
+    tax = 0
+elif income <= 1000000:
+    tax = income * 0.10
+else:
+    tax = income * 0.20
+
+if age >= 60:
+    tax = tax - (tax * 0.05)
+
+print("Final Income Tax:", tax)
+```
+
+---
+
+# 2️⃣ Bank Loan EMI Eligibility
+
+### 📝 Question:
+
+* Salary must be ≥ ₹30,000
+* CIBIL score ≥ 700
+* If both satisfied → Approved
+* If salary ≥ ₹50,000 → Eligible for premium loan
+
+---
+
+### ✅ Answer:
+
+```python
+salary = int(input("Enter Salary: "))
+cibil = int(input("Enter CIBIL Score: "))
+
+if salary >= 30000 and cibil >= 700:
+    if salary >= 50000:
+        print("Premium Loan Approved")
+    else:
+        print("Loan Approved")
+else:
+    print("Loan Rejected")
+```
+
+---
+
+# 3️⃣ Hospital Bill Calculator
+
+### 📝 Question:
+
+* General ward → ₹2000/day
+* ICU → ₹5000/day
+* If days > 5 → 10% discount
+* If insurance available → subtract ₹10,000
+
+---
+
+### ✅ Answer:
+
+```python
+ward = input("Enter Ward Type (General/ICU): ")
+days = int(input("Enter Number of Days: "))
+insurance = input("Insurance Available? (Yes/No): ")
+
+if ward.lower() == "general":
+    bill = days * 2000
+else:
+    bill = days * 5000
+
+if days > 5:
+    bill = bill - (bill * 0.10)
+
+if insurance.lower() == "yes":
+    bill = bill - 10000
+
+if bill < 0:
+    bill = 0
+
+print("Final Hospital Bill:", bill)
+```
+
+---
+
+# 4️⃣ Electricity Multi-Slab Bill
+
+### 📝 Question:
+
+* 0–100 units → ₹5/unit
+* 101–300 → ₹7/unit
+* Above 300 → ₹10/unit
+* If bill > ₹5000 → 5% surcharge
+
+---
+
+### ✅ Answer:
+
+```python
+units = int(input("Enter Units Consumed: "))
+
+if units <= 100:
+    bill = units * 5
+elif units <= 300:
+    bill = units * 7
+else:
+    bill = units * 10
+
+if bill > 5000:
+    bill = bill + (bill * 0.05)
+
+print("Final Electricity Bill:", bill)
+```
+
+---
+
+# 5️⃣ Car Insurance Premium
+
+### 📝 Question:
+
+* Car value ≤ ₹5L → 3% premium
+* Above ₹5L → 5% premium
+* If driver age < 25 → +2% extra
+* No-claim bonus → 10% discount
+
+---
+
+### ✅ Answer:
+
+```python
+value = float(input("Enter Car Value: "))
+age = int(input("Enter Driver Age: "))
+ncb = input("No Claim Bonus? (Yes/No): ")
+
+if value <= 500000:
+    premium = value * 0.03
+else:
+    premium = value * 0.05
+
+if age < 25:
+    premium = premium + (value * 0.02)
+
+if ncb.lower() == "yes":
+    premium = premium - (premium * 0.10)
+
+print("Final Insurance Premium:", premium)
+```
+
+---
+
+# 6️⃣ Exam Grade Calculator
+
+### 📝 Question:
+
+* ≥ 90 → A
+* 75–89 → B
+* 50–74 → C
+* < 50 → Fail
+* Attendance < 75% → Grade reduced by one level
+
+---
+
+### ✅ Answer:
+
+```python
+marks = int(input("Enter Marks: "))
+attendance = int(input("Enter Attendance %: "))
+
+if marks >= 90:
+    grade = "A"
+elif marks >= 75:
+    grade = "B"
+elif marks >= 50:
+    grade = "C"
+else:
+    grade = "Fail"
+
+if attendance < 75 and grade != "Fail":
+    if grade == "A":
+        grade = "B"
+    elif grade == "B":
+        grade = "C"
+    elif grade == "C":
+        grade = "Fail"
+
+print("Final Grade:", grade)
+```
+
+---
+
+# 7️⃣ Online Shopping Discount
+
+### 📝 Question:
+
+* Cart ≥ ₹2000 → 10% discount
+* ≥ ₹5000 → 20% discount
+* Prime member → extra 5%
+* Festival coupon → subtract ₹500
+
+---
+
+### ✅ Answer:
+
+```python
+amount = float(input("Enter Cart Amount: "))
+prime = input("Prime Member? (Yes/No): ")
+coupon = input("Festival Coupon? (Yes/No): ")
+
+if amount >= 5000:
+    discount = amount * 0.20
+elif amount >= 2000:
+    discount = amount * 0.10
+else:
+    discount = 0
+
+amount = amount - discount
+
+if prime.lower() == "yes":
+    amount = amount - (amount * 0.05)
+
+if coupon.lower() == "yes":
+    amount = amount - 500
+
+if amount < 0:
+    amount = 0
+
+print("Final Payable Amount:", amount)
+```
+
+---
+
+# 8️⃣ Employee Bonus Calculator
+
+### 📝 Question:
+
+* Experience ≥ 10 years → 20% bonus
+* 5–9 years → 10%
+* < 5 years → 5%
+* Performance rating ≥ 4 → +5% extra
+
+---
+
+### ✅ Answer:
+
+```python
+salary = float(input("Enter Salary: "))
+experience = int(input("Enter Years of Experience: "))
+rating = int(input("Enter Performance Rating (1-5): "))
+
+if experience >= 10:
+    bonus = salary * 0.20
+elif experience >= 5:
+    bonus = salary * 0.10
+else:
+    bonus = salary * 0.05
+
+if rating >= 4:
+    bonus = bonus + (salary * 0.05)
+
+print("Total Bonus:", bonus)
+```
+
+---
+
+# 9️⃣ Parking Fee Calculator
+
+### 📝 Question:
+
+* Bike → ₹20/hr
+* Car → ₹50/hr
+* If hours > 5 → 10% discount
+* VIP pass → Free
+
+---
+
+### ✅ Answer:
+
+```python
+vehicle = input("Enter Vehicle Type (Bike/Car): ")
+hours = int(input("Enter Hours Parked: "))
+vip = input("VIP Pass? (Yes/No): ")
+
+if vip.lower() == "yes":
+    fee = 0
+else:
+    if vehicle.lower() == "bike":
+        fee = hours * 20
+    else:
+        fee = hours * 50
+
+    if hours > 5:
+        fee = fee - (fee * 0.10)
+
+print("Parking Fee:", fee)
+```
+
+---
+
+# 🔟 Mobile Data Plan Billing
+
+### 📝 Question:
+
+* Basic → ₹299 (1GB/day)
+* Premium → ₹599 (2GB/day)
+* Extra data → ₹10 per GB
+* Auto-pay → 5% discount
+
+---
+
+### ✅ Answer:
+
+```python
+plan = input("Enter Plan (Basic/Premium): ")
+extra_gb = int(input("Enter Extra GB Used: "))
+autopay = input("Auto Pay Enabled? (Yes/No): ")
+
+if plan.lower() == "basic":
+    bill = 299
+else:
+    bill = 599
+
+bill = bill + (extra_gb * 10)
+
+if autopay.lower() == "yes":
+    bill = bill - (bill * 0.05)
+
+print("Final Mobile Bill:", bill)
+```
+
+
